@@ -54,6 +54,7 @@ router.post("/register", async (req, res, next) => {
 
 router.post("/login", async (req, res, next) => {
   const { userName, password } = req.body;
+
   try {
     const user = await User.findOne({ userName: userName });
 
@@ -76,7 +77,7 @@ router.post("/login", async (req, res, next) => {
 
     const { password: userPassword, isAdmin, ...otherDetail } = user._doc;
 
-    res
+    return res
       .cookie("access_token", token, {
         httpOnly: true,
       })

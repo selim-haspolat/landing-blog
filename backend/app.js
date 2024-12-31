@@ -35,9 +35,7 @@ app.use("/api/blog", blogRouter);
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
   const errorMessage = err.message || "Server error";
-  
-  console.log(errorStatus, errorMessage)
-  
+    
   return res.status(errorStatus).json({
     success: false,
     status: errorStatus,
